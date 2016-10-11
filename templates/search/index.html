@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+    <head>
+        <title>Tasty search!</title>
+        <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/input.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/segment.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/button.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/message.min.css">
+    </head>
+
+    
+        <div style="margin:50px;" class="container">
+        <form  method="GET">
+        <div>
+        	<div class="col-md-2"></div>
+        	<div class="col-md-8">
+        		<div class="ui fluid action input">
+                {% if query %}
+  					<input type="text" value={{query}} name="query" placeholder="Gourmet reviews search...">
+                {% else %}
+                    <input type="text" name="query" placeholder="Gourmet reviews search...">
+                {% endif %}
+  					<button type="submit" class="ui button">Search</button>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+        </div>
+        </form>
+        </div>
+        {% if data %}
+        <div style="margin-left:40px;margin-right:200px;">
+        {%for review in data%}
+            <div class="ui positive message">
+            <div class="header">
+            {{review.summary}}
+            </div>
+            <p>{{review.text}}</p>
+            <h5>Search score: {{review.searchScore}} | ProductId: {{review.productId}} | UserId: {{review.userId}} | Helpfulness: {{review.helpfulness}} | Timestamp: {{review.time}}</h5>
+            </div>
+        {% endfor %}
+        </div>
+        {% endif %}
+</html>
