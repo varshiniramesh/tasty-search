@@ -1,3 +1,6 @@
+# This module filters the top 20 reviews in the result set and 
+# send dictionary data to the request in the views.py, that is then rendered in out template
+
 from __future__ import division
 from search.reviews import Reviews
 from search.index import Index

@@ -1,5 +1,7 @@
 from search.reviewCollection import reviewCollection
 
+# The file parser on foods.txt 
+# adds a collection of review objects into reviewCollection Container
 def parseReviews():
 	flag = True
 	review_list = open("foods.txt")

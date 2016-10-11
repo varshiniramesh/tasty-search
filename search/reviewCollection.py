@@ -1,3 +1,4 @@
+#Review Collection is the container implementation for storing reviews
 from search.reviews import Reviews
 
 class reviewCollection:

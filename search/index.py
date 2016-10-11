@@ -1,8 +1,10 @@
 import re
 from search.reviewCollection import reviewCollection
 
+# Index is built for the dataset, suitable for implementing search
+# a hashMap that maps any given keyword with the list of review objects in the ReviewCollection 
+# Container that contains the keyword
 class Index():
-	# {word: [list of reviews]}
 	hashMap = {}
 	flag = True
 	def buildIndexes(self):

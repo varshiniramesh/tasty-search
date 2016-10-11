@@ -1,3 +1,5 @@
+# Reviews class defines the structure of each review
+#getSCore , assigns a score the review object based on the query set
 class Reviews:
 	def __init__(self,productId,userId,profileName,helpfulness,score,time,summary,text):
 		self.productId = productId
