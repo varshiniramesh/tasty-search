@@ -14,29 +14,34 @@ def fetchReviewData(query):
 	n = len(query)
 	result = {}
 	scoreList = []
-	for review in reviewList:
+	filteredReviewIndexList = []
+	for term in query:
+		if term in keywordHash:
+			temp = keywordHash[term]
+			filteredReviewIndexList.extend(temp)
+
+	filteredReviewIndexList = list(set(filteredReviewIndexList))
+
+	for index in filteredReviewIndexList:
+		review = reviewList[index]
 		count = 0
 		for term in query:
 			if term in keywordHash:
 				temp = keywordHash[term]
-				if review_index in temp:
+				if index in temp:
 					count = count + 1
 		score = count/n
 		if score not in scoreList and count>0:
-			print count,n,score
 			scoreList.append(score)
 			l = []
-			l.append(review_index)
+			l.append(index)
 			result.update({score:l})
 		elif score in scoreList and count>0:
 			l = result[score]
-			l.append(review_index)
+			l.append(index)
 			result.update({score:l})
-		review_index = review_index+1
 
-	review_data = getReviewData(scoreList,result)
-	for item in review_data:
-		print item	
+	review_data = getReviewData(scoreList,result)	
 	return review_data
 
 
